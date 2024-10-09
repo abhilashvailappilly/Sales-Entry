@@ -26,7 +26,8 @@ interface ItemInterface {
 
 const Detail = () => {
     // Use react-query to fetch data
-    const [sr_no , _setSr_no] = useState(useSelector((state : RootInterface)=>state?.root.sr_no))
+    const sr_no = useSelector((state: RootInterface) => state?.root.sr_no) || 1
+    
     const [fetchedData, setFetchedData] = useState<ItemInterface[]>([]);
     const [totalAmount , setTotalAmount] = useState<string>("")
     const dispatch = useDispatch()
@@ -38,6 +39,7 @@ const Detail = () => {
     useEffect(() => {
         if (data && data.length > 0) {
             const filteredData = data.filter((item: ItemInterface) => item.sr_no === sr_no);
+            console.log(filteredData,sr_no)
             setFetchedData(filteredData);
         }
  const totalAmount = fetchedData.reduce((total, item) => total + item.qty * item.rate, 0).toFixed(2);
