@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from '../home/Header'
 import Detail from '../home/Detail'
 import Actions from '../home/Actions'
